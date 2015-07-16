@@ -34,4 +34,10 @@ class Session_DBus(dbus.service.Object):
 
 DBusGMainLoop(set_as_default=True)
 dbus_service = Session_DBus()
-Gtk.main()
+
+
+try:
+	Glib.MainLoop().run()
+except KeyboardInterrupt:
+	print("\nThe MainLoop will close...")
+	Glib.MainLoop().quit()

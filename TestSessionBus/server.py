@@ -2,10 +2,10 @@
 
 # D-Bus Server -- Session Bus
 
-from gi.repository import Gtk
 import dbus
 import dbus.service
 from dbus.mainloop.glib import DBusGMainLoop
+from gi.repository import GLib
 
 class Session_DBus(dbus.service.Object):
 	def __init__(self):
@@ -33,4 +33,9 @@ class Session_DBus(dbus.service.Object):
 
 DBusGMainLoop(set_as_default=True)
 dbus_service = Session_DBus()
-Gtk.main()
+
+try:
+	GLib.MainLoop().run()
+except KeyboardInterrupt:
+	print("\nThe MainLoop will close...")
+	GLib.MainLoop().quit()
