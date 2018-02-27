@@ -2,7 +2,7 @@
 
 # D-Bus Server -- Server Bus
 
-from gi.repository import Gtk
+from gi.repository import GLib
 import dbus
 import dbus.service
 from dbus.mainloop.glib import DBusGMainLoop
@@ -37,7 +37,7 @@ dbus_service = Session_DBus()
 
 
 try:
-	Glib.MainLoop().run()
+	GLib.MainLoop().run()
 except KeyboardInterrupt:
 	print("\nThe MainLoop will close...")
-	Glib.MainLoop().quit()
+	GLib.MainLoop().quit()
